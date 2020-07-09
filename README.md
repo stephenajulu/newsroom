@@ -1,8 +1,6 @@
 # Newsroom Theme
 
-This a simple, minimalistic theme, which is inspired by [Apple's Newsroom page](https://www.apple.com/newsroom/). You won't find a single reference of monolithic libraries such as `jquery`, `bootstrap`, `bulma`.
-
-All the templates herein use *grid css*, *flexbox* & *vanilla js*. You may,however, proceed and tweak everything as you wish.
+This is a simple, minimalistic theme, which is inspired by [Apple's Newsroom page](https://www.apple.com/newsroom/). It uses *grid css*, *flexbox* & js (no jQuery, or related libraries).
 
 ![Hugo Newsroom Theme](https://github.com/onweru/newsroom/blob/master/images/screenshot.png)
 
@@ -13,6 +11,7 @@ All the templates herein use *grid css*, *flexbox* & *vanilla js*. You may,howev
 * Responsive
 * Deeplinks
 * Dark Mode
+* Syntax highlighting 
 
 ### Deeplinks
 
@@ -30,15 +29,15 @@ git submodule add https://github.com/onweru/newsroom.git themes/newsroom
 
 ## Configuration
 
-You can configure the site using as follows:
+You can configure the site as follows:
 
 1. **General Information**
 
-    Use the file `config.toml`.
+    Use `config.toml` file.
 
 2. **menu**, **footer**
 
-    See the **data** files inside the `data/` directory.
+    See the yaml files inside the `data/` directory.
 
 ## Start publishing
 
@@ -46,7 +45,7 @@ Follow the `exampleSite/`; specifically, the [content](https://github.com/onweru
 
 ### Dark Mode
 
-Today most operating systems & browsers support dark mode. Like twitter, which automatically turns into dark mode when the user chooses darkmode, this theme does the same thing.
+Today, operating systems have a system-wide __light ~ dark mode__ switch. Your website will adapt to the user's preferred lighting mode. Still, if the user wants to opt in or out of darkmode, there's a UI control for that too in the menu 😊.
 
 ![Dark Mode](https://github.com/onweru/newsroom/blob/master/images/screenshot-dark.png)
 
@@ -62,20 +61,49 @@ Today most operating systems & browsers support dark mode. Like twitter, which a
 |--- | ---|
 | ![404 page](https://github.com/onweru/newsroom/blob/master/images/syntax.png) | ![404 page on dark Mode](https://github.com/onweru/newsroom/blob/master/images/syntax-dark.png)|
 
+If you wish, you can opt to [use Chroma](./exampleSite/config.toml#L17-L27).
+
 ### I want to use disqus
 
-Some folks may want to use disqus on their site. In fact, there [was an issue](https://github.com/onweru/newsroom/issues/2) for that express purpose.
-
-To enable disqus on your site, simply, add the line below to you `config.toml` file. If you're working off the [exampleSite](https://github.com/onweru/newsroom/tree/master/exampleSite), the line is [already there](https://github.com/onweru/newsroom/blob/ad9b7a9f7ea266b539f846a2f3bdf080e648bb84/exampleSite/config.toml#L15-L16); just uncomment it.
+If you like, you could [use disqus on your site](https://github.com/onweru/newsroom/issues/2). To enable disqus on your site, simply, add the line below to you `config.toml` file. If you're working off the [exampleSite](https://github.com/onweru/newsroom/tree/master/exampleSite), the line is [already there](https://github.com/onweru/newsroom/blob/ad9b7a9f7ea266b539f846a2f3bdf080e648bb84/exampleSite/config.toml#L15-L16); just uncomment it.
 
 ```toml
 disqusShortname = "yourdiscussshortname"
 ```
-> remember to edit the `yourdiscussshortname` appropriately.
+> Remember to edit the `yourdiscussshortname` appropriately.
 
 From your disqus dashboard, set your scripts `color scheme` to __auto__. See screenshot below
 
 ![](https://github.com/onweru/newsroom/blob/master/images/disqus-color-scheme.png)
+
+## Custom Shortcodes
+
+This theme ships with __2 custom shortcodes__ (they both use positional parameters):
+
+1. __Video__
+    This shortcode can be used to embed a youtube video with custom styling. It takes a solo positional parameter.
+    
+    ```
+    ...
+    {{< video "youtubeVideoID" >}}
+    ...
+    ```
+
+2. __Picture__
+    You want to use darkmode images when darkmode is enabled on a device and a regular image on lightmode? It takes 3 positional parameter
+
+    Store these images in the `static/images` directory. 
+    
+    ```
+    ...
+    {{< picture "lightModeImage.png" "darkModeImage.png" "Image alt text" >}}
+    ...
+    ```
+
+## From the same creator
+
+1. [Swift Theme](https://github.com/onweru/hugo-swift-theme)
+2. [Compose Theme](https://github.com/onweru/compose)
 
 ## License
 
